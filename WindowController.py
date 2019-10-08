@@ -57,4 +57,4 @@ class WindowController:
         gpio.output(self.channel2, gpio.LOW)
 
     async def wait(self, wait_time):
-        await time.sleep(wait_time)
+        time.sleep(wait_time)
