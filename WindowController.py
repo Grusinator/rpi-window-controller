@@ -29,7 +29,7 @@ class WindowController():
         time.sleep(self.opening_time)
         self.stop()
 
-    def close_window():
+    def close_window(self):
         self.set_forward()
         time.sleep(self.opening_time)
         self.stop()
