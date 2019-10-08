@@ -1,5 +1,4 @@
 import asyncio
-
 from flask import Flask
 
 from WindowController import WindowController
