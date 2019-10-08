@@ -9,6 +9,7 @@ class WindowController:
         self.channel2 = 38
         self.opening_time = 15
         self.test_time = 5
+        self.STOP = False
 
         gpio.setmode(gpio.BOARD)
         gpio.setwarnings(False)
@@ -17,6 +18,9 @@ class WindowController:
 
     def run_test(self):
         while True:
+            if self.STOP is True:
+                self.STOP = False
+                break
             self.set_forward()
             self.wait(self.test_time)
             self.stop()

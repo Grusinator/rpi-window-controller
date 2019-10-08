@@ -31,6 +31,11 @@ def close_window():
 def default():
     return "default landing page"
 
+@app.route('/stop/')
+def stop():
+    controller.STOP = True
+    return "default landing page"
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=80, host='0.0.0.0')
