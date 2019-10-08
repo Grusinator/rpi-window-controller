@@ -1,26 +1,39 @@
 import RPi.GPIO as gpio
 import time
 
-channel1 = 40
-channel2 = 38
 
-gpio.setmode(gpio.BOARD)
-gpio.setup(channel1, gpio.OUT)
-gpio.setup(channel2, gpio.OUT)
+class WindowController():
+	def __init__(self):
+		channel1 = 40
+		channel2 = 38
+		gpio.setmode(gpio.BOARD)
+		gpio.setup(channel1, gpio.OUT, gpio.LOW)
+		gpio.setup(channel2, gpio.OUT, gpio.LOW)
 
-while True:
-	set_forward()
-	time.sleep(4)
-	set_backwards()
-	time.sleep(4)
+	def run_test(self)
+		while True:
+			self.set_forward()
+			time.sleep(10)
+			self.stop()
+			time.sleep(10)
+			self.set_backwards()
+			time.sleep(10)
+			self.stop()
+			time.sleep(10)
+
+	def set_forward(self):
+		gpio.output(channel1, gpio.HIGH)
+		gpio.output(channel2, gpio.LOW)
 
 
-def set_forward():
-	gpio.output(channel1, gpio.HIGH)
-	gpio.output(channel2, gpio.LOW)
+	def set_backwards(self):
+		gpio.output(channel1, gpio.LOW)
+		gpio.output(channel2, gpio.HIGH)
 
+	def stop(self):
+		gpio.output(channel1, gpio.LOW)
+		gpio.output(channel2, gpio.LOW)
 
-def set_backwards():
-	gpio.output(channel1, gpio.LOW)
-	gpio.output(channel2, gpio.HIGH)
-
+if __name__ == "__main__":
+	controller = WindowController()
+	controller.run_test()
