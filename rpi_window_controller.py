@@ -11,12 +11,12 @@ def running_test():
 	return "running test"
 
 @app.route('/open/')
-def running_test():
+def open_window():
 	controller.open_window()
 	return "opening"
 
 @app.route('/close/')
-def running_test():
+def close_window():
 	controller.close_window()
 	return "closing"
 
