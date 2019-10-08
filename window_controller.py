@@ -1,8 +1,10 @@
 import RPi.GPIO as gpio
 import time
 
-gpio.setmode(gpio.BCM)
-gpio.setup(18, gpio.OUT)
+channel = 40
 
-#while True:
-gpio.output(18, gpio.HIGH)
+gpio.setmode(gpio.BOARD)
+gpio.setup(channel, gpio.OUT)
+
+while True:
+	gpio.output(channel, gpio.HIGH)
