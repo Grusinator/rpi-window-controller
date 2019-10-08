@@ -7,7 +7,7 @@ class WindowController:
     def __init__(self):
         self.channel1 = 40
         self.channel2 = 38
-        self.opening_time = 15
+        self.opening_time = 10
         self.test_time = 5
         self.STOP = False
 
@@ -46,13 +46,13 @@ class WindowController:
 
     def set_forward(self):
         print("set forward")
-        gpio.output(self.channel1, gpio.HIGH)
-        gpio.output(self.channel2, gpio.LOW)
+        gpio.output(self.channel1, gpio.LOW)
+        gpio.output(self.channel2, gpio.HIGH)
 
     def set_backwards(self):
         print("set backward")
-        gpio.output(self.channel1, gpio.LOW)
-        gpio.output(self.channel2, gpio.HIGH)
+        gpio.output(self.channel1, gpio.HIGH)
+        gpio.output(self.channel2, gpio.LOW)
 
     def stop(self):
         print("stop")
