@@ -4,13 +4,13 @@ import time
 
 class WindowController():
 	def __init__(self):
-		channel1 = 40
-		channel2 = 38
+		self.channel1 = 40
+		self.channel2 = 38
 		gpio.setmode(gpio.BOARD)
-		gpio.setup(channel1, gpio.OUT, gpio.LOW)
-		gpio.setup(channel2, gpio.OUT, gpio.LOW)
+		gpio.setup(self.channel1, gpio.OUT, gpio.LOW)
+		gpio.setup(self.channel2, gpio.OUT, gpio.LOW)
 
-	def run_test(self)
+	def run_test(self):
 		while True:
 			self.set_forward()
 			time.sleep(10)
@@ -22,17 +22,17 @@ class WindowController():
 			time.sleep(10)
 
 	def set_forward(self):
-		gpio.output(channel1, gpio.HIGH)
-		gpio.output(channel2, gpio.LOW)
+		gpio.output(self.channel1, gpio.HIGH)
+		gpio.output(self.channel2, gpio.LOW)
 
 
 	def set_backwards(self):
-		gpio.output(channel1, gpio.LOW)
-		gpio.output(channel2, gpio.HIGH)
+		gpio.output(self.channel1, gpio.LOW)
+		gpio.output(self.channel2, gpio.HIGH)
 
 	def stop(self):
-		gpio.output(channel1, gpio.LOW)
-		gpio.output(channel2, gpio.LOW)
+		gpio.output(self.channel1, gpio.LOW)
+		gpio.output(self.channel2, gpio.LOW)
 
 if __name__ == "__main__":
 	controller = WindowController()
