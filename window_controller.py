@@ -7,8 +7,8 @@ class WindowController():
 		self.channel1 = 40
 		self.channel2 = 38
 		gpio.setmode(gpio.BOARD)
-		gpio.setup(self.channel1, gpio.OUT, gpio.LOW)
-		gpio.setup(self.channel2, gpio.OUT, gpio.LOW)
+		gpio.setup(self.channel1, gpio.OUT, initial=gpio.LOW)
+		gpio.setup(self.channel2, gpio.OUT, initial=gpio.LOW)
 
 	def run_test(self):
 		while True:
