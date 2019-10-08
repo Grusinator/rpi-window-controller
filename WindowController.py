@@ -15,28 +15,28 @@ class WindowController:
         gpio.setup(self.channel1, gpio.OUT, initial=gpio.LOW)
         gpio.setup(self.channel2, gpio.OUT, initial=gpio.LOW)
 
-    async def run_test(self):
+    def run_test(self):
         while True:
             self.set_forward()
-            await self.wait(self.test_time)
+            self.wait(self.test_time)
             self.stop()
-            await self.wait(self.test_time)
+            self.wait(self.test_time)
             self.set_backwards()
-            await self.wait(self.test_time)
+            self.wait(self.test_time)
             self.stop()
-            await self.wait(self.test_time)
+            self.wait(self.test_time)
 
-    async def open_window(self):
+    def open_window(self):
         print("opening window")
         self.set_forward()
-        await self.wait(self.opening_time)
+        self.wait(self.opening_time)
         self.stop()
         print("stopped")
 
-    async def close_window(self):
+    def close_window(self):
         print("closing window")
         self.set_backwards()
-        await self.wait(self.opening_time)
+        self.wait(self.opening_time)
         self.stop()
         print("stopped")
 
@@ -55,5 +55,5 @@ class WindowController:
         gpio.output(self.channel1, gpio.LOW)
         gpio.output(self.channel2, gpio.LOW)
 
-    async def wait(self, wait_time):
+    def wait(self, wait_time):
         time.sleep(wait_time)
