@@ -1,7 +1,6 @@
-import RPi.GPIO as gpio
 import time
 
-import asyncio
+import RPi.GPIO as gpio
 
 
 class WindowController:
