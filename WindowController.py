@@ -1,7 +1,6 @@
 import RPi.GPIO as gpio
 import time
 
-
 class WindowController():
 	def __init__(self):
 		self.channel1 = 40
@@ -9,6 +8,7 @@ class WindowController():
 		gpio.setmode(gpio.BOARD)
 		gpio.setup(self.channel1, gpio.OUT, initial=gpio.LOW)
 		gpio.setup(self.channel2, gpio.OUT, initial=gpio.LOW)
+		gpio.setwarnings(False)
 
 	def run_test(self):
 		while True:
@@ -33,7 +33,3 @@ class WindowController():
 	def stop(self):
 		gpio.output(self.channel1, gpio.LOW)
 		gpio.output(self.channel2, gpio.LOW)
-
-if __name__ == "__main__":
-	controller = WindowController()
-	controller.run_test()
