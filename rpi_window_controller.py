@@ -1,4 +1,3 @@
-import asyncio
 from flask import Flask
 
 from WindowController import WindowController
@@ -9,19 +8,22 @@ controller = WindowController()
 
 @app.route('/test/')
 def running_test():
-    asyncio.run(controller.run_test())
+    controller.run_test()
+
     return "running test"
 
 
 @app.route('/open/')
 def open_window():
-    asyncio.run(controller.open_window())
+    controller.open_window()
+
     return "opening"
 
 
 @app.route('/close/')
 def close_window():
-    asyncio.run(controller.close_window())
+    controller.close_window()
+
     return "closing"
 
 
