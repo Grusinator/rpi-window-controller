@@ -5,10 +5,11 @@ class WindowController():
 	def __init__(self):
 		self.channel1 = 40
 		self.channel2 = 38
+        self.opening_time = 50
 		gpio.setmode(gpio.BOARD)
+        gpio.setwarnings(False)
 		gpio.setup(self.channel1, gpio.OUT, initial=gpio.LOW)
 		gpio.setup(self.channel2, gpio.OUT, initial=gpio.LOW)
-		gpio.setwarnings(False)
 
 	def run_test(self):
 		while True:
@@ -20,6 +21,16 @@ class WindowController():
 			time.sleep(10)
 			self.stop()
 			time.sleep(10)
+
+    def open_window(self):
+        self.set_forward()
+        time.sleep(self.opening_time)
+        self.stop()
+
+    def close_window():
+        self.set_forward()
+        time.sleep(self.opening_time)
+        self.stop()
 
 	def set_forward(self):
 		gpio.output(self.channel1, gpio.HIGH)

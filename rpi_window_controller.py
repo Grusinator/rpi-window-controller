@@ -3,20 +3,26 @@ from flask import Flask
 from WindowController import WindowController
 
 app = Flask(__name__)
+controller = WindowController()
 
 @app.route('/test/')
 def running_test():
-	controller = WindowController()
 	controller.run_test()
-	text = "running test"
-	print(text)
-	return text
+	return "running test"
+
+@app.route('/open/')
+def running_test():
+	controller.open_window()
+	return "opening"
+
+@app.route('/close/')
+def running_test():
+	controller.close_window()
+	return "closing"
 
 @app.route('/')
 def default():
-	text = "default landing page"
-	print(text)
-	return text
+	return "default landing page"
 
 if __name__ == '__main__':
     app.run(debug=True, port=80, host='0.0.0.0')
