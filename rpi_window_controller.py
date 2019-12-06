@@ -1,10 +1,15 @@
-from flask import Flask
+import os
+
+from flask import Flask, request
 
 from WindowController import WindowController
 
 app = Flask(__name__)
-controller = WindowController()
+app.config['BASIC_AUTH_USERNAME'] = 'user'
+app.config['BASIC_AUTH_PASSWORD'] = PASSWORD = os.environ.get('API_PASSWORD') or "verySecure2019"
+app.config['BASIC_AUTH_FORCE'] = True
 
+controller = WindowController()
 
 @app.route('/test/')
 def running_test():
@@ -16,7 +21,12 @@ def running_test():
 @app.route('/open/')
 def open_window():
     controller.open_window()
+    return "opening"
 
+@app.route('/ventilate/')
+def open_window():
+    min = request.args.get('min')
+    controller.timed_ventilation(min)
     return "opening"
 
 

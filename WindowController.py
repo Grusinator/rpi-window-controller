@@ -16,6 +16,11 @@ class WindowController:
         gpio.setup(self.channel1, gpio.OUT, initial=gpio.LOW)
         gpio.setup(self.channel2, gpio.OUT, initial=gpio.LOW)
 
+    def timed_ventilation(self, mins):
+        self.open_window()
+        self.wait(mins * 60)
+        self.close_window()
+
     def run_test(self):
         while True:
             if self.STOP is True:
