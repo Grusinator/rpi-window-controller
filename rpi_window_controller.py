@@ -11,6 +11,7 @@ app.config['BASIC_AUTH_FORCE'] = True
 
 controller = WindowController()
 
+
 @app.route('/test/')
 def running_test():
     controller.run_test()
@@ -23,11 +24,12 @@ def open_window():
     controller.open_window()
     return "opening"
 
+
 @app.route('/ventilate/')
-def open_window():
+def timed_ventilation():
     min = request.args.get('min')
     controller.timed_ventilation(min)
-    return "opening"
+    return f"ventilating for {min} minutes"
 
 
 @app.route('/close/')
