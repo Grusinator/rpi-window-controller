@@ -15,7 +15,6 @@ controller = WindowController()
 @app.route('/test/')
 def running_test():
     controller.run_test()
-
     return "running test"
 
 
@@ -27,7 +26,7 @@ def open_window():
 
 @app.route('/ventilate/')
 def timed_ventilation():
-    min = request.args.get('min')
+    min = float(request.args.get('min', default="2"))
     controller.timed_ventilation(min)
     return f"ventilating for {min} minutes"
 
@@ -35,13 +34,12 @@ def timed_ventilation():
 @app.route('/close/')
 def close_window():
     controller.close_window()
-
     return "closing"
 
 
 @app.route('/')
 def default():
-    return "default landing page"
+    return "Welcome to the window-controller api"
 
 
 @app.route('/stop/')
@@ -51,4 +49,4 @@ def stop():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, port=250, host='0.0.0.0')
+    app.run(debug=False, port=5000, host='0.0.0.0')
