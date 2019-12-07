@@ -10,11 +10,13 @@ class WindowController:
         self.opening_time = 10
         self.test_time = 5
         self.STOP = False
-
+        
         gpio.setmode(gpio.BOARD)
         gpio.setwarnings(False)
         gpio.setup(self.channel1, gpio.OUT, initial=gpio.LOW)
         gpio.setup(self.channel2, gpio.OUT, initial=gpio.LOW)
+        self.close_window()
+        self.state_open_level = 0.0
 
     def timed_ventilation(self, mins: float):
         self.open_window()
@@ -39,6 +41,7 @@ class WindowController:
         print("opening window")
         self.set_forward()
         self.wait(self.opening_time)
+        self.state_open_level = 1
         self.stop()
         print("stopped")
 
@@ -46,6 +49,7 @@ class WindowController:
         print("closing window")
         self.set_backwards()
         self.wait(self.opening_time)
+        self.state_open_level = 2
         self.stop()
         print("stopped")
 
